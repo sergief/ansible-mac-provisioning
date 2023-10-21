@@ -1,0 +1,27 @@
+---
+- name: Install pyenv
+  homebrew:
+    name: pyenv
+    state: present
+- name: Create pyenv configuration file
+  template:
+    src: zshrc_include_pyenv.j2
+    dest: "{{ ansible_env.HOME }}/.zshrc_include_pyenv"
+    owner: "{{ ansible_env.USER }}"
+    mode: '0644'
+    force: yes
+- name: Install dependencies to build python
+  homebrew:
+    name: "{{ packages_needed_to_build_python }}"
+    state: present
+- name: Install python
+  shell: source {{ ansible_env.HOME }}/.zshrc && pyenv install {{ python_version }}
+  args:
+    executable: /bin/zsh
+    creates: "{{ ansible_env.HOME }}/.pyenv/versions/{{ python_version }}"
+- name: Use the selected python version
+  shell: source {{ ansible_env.HOME }}/.zshrc && pyenv global {{ python_version }}
+  args:
+    executable: /bin/zsh
+
+

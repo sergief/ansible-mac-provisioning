@@ -1,0 +1,48 @@
+---
+- name: Install Oh My Zsh
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  args:
+    chdir: "{{ ansible_env.HOME }}"
+    creates: "{{ ansible_env.HOME }}/.oh-my-zsh"
+- name: Install zsh-autosuggestions
+  homebrew:
+    name: zsh-autosuggestions
+    state: present
+- name: Install zsh-autosuggestions plugin
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+- name: Install zsh-synthax-highlighting
+  git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+- name: Install powerlevel9k
+  git:
+    repo: https://github.com/bhilburn/powerlevel9k.git
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/themes/powerlevel9k"
+- name: get powerline fonts
+  git:
+    repo: "https://github.com/powerline/fonts.git"
+    dest: "{{ ansible_env.HOME }}/fonts"
+  register: powerlineFonts
+- name: Install powerline fonts
+  shell: ./install.sh
+  args:
+    chdir: "{{ ansible_env.HOME }}/fonts"
+  when: powerlineFonts.changed
+- name: Create zsh configuration file
+  template:
+    src: zshrc.j2
+    dest: "{{ ansible_env.HOME }}/.zshrc"
+    owner: "{{ ansible_env.USER }}"
+    mode: '0644'
+    force: yes
+- name: Install iTerm2
+  homebrew_cask:
+    name: iterm2
+    state: present
+  register: iTerm
+- name:
+  debug:
+    msg: "Remember to change the font in iTerm:  iTerm2 > Preferences > Profiles > Text > Change Font > Inconsolata"
+  when: iTerm.changed
