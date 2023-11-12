@@ -10,6 +10,9 @@
       - ms-azuretools.vscode-docker
       - eamodio.gitlens
       - ms-python.python
+      - esbenp.prettier-vscode
+      - VisualStudioExptTeam.vscodeintellicode
+      - dbaeumer.vscode-eslint
     homebrew_packages:
       - cask
     homebrew_cask_packages:
@@ -24,6 +27,12 @@
       - pycharm-ce
       - darktable
       - pencil
+    mac_app_store_packages:
+      - 409183694 # Keynote
+      - 409203825 # Numbers
+      - 409201541 # Pages
+      - 1474276998 # HP Smart for Desktop
+      - 310633997 # WhatsApp
   roles:
     - oh-my-zsh
     - node

@@ -1,4 +1,10 @@
 ---
+- name: Install dependencies
+  homebrew:
+    name:
+      - cask
+      - mas
+    state: present
 - name: Install Homebrew packages
   homebrew:
     name: "{{ homebrew_packages }}"
@@ -7,4 +13,7 @@
   homebrew_cask:
     name: "{{ homebrew_cask_packages }}"
     state: present
-  
+- name: Install Mac App store packages
+  mas:
+    id: "{{ mac_app_store_packages }}"
+    state: present
