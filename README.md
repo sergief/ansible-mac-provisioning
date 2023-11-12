@@ -9,10 +9,10 @@ This repository contains ansible roles to automatically install Software in a ma
 * `node`: Installs [NVM](https://github.com/nvm-sh/nvm) and the specified Node version in the playbook file.
 * `python`: Installs [PyEnv](https://github.com/pyenv/pyenv) and the selected Python version in the playbook file.
 * `vscode`: Installs [Visual Studio Code](https://code.visualstudio.com) and the chosen plugins, specified in the playbook file.
-* `hombrew`: Installs the [homebrew](https://brew.sh) and the [homebrew cask](https://github.com/Homebrew/homebrew-cask) packages specified in the playbook file.
+* `hombrew`: Installs the [homebrew](https://brew.sh) packages, the [homebrew cask](https://github.com/Homebrew/homebrew-cask) packages and the [Mac App Store](https://github.com/mas-cli/mas) packages specified in the playbook file.
 
 ## Requirements
-Before using this tools you must install [homebrew](https://brew.sh),  [homebrew cask](https://github.com/Homebrew/homebrew-cask) and [ansible](https://www.ansible.com)
+Before using this tools you must install [homebrew](https://brew.sh) and [ansible](https://www.ansible.com)
 
 Once you have installed `homebrew`, the easiest way to install ansible is via `homebrew`:
 ```zsh
