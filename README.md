@@ -1,5 +1,7 @@
 # Ansible Mac Provisioning
 
+![ansible-lint](https://github.com/sergief/ansible-mac-provisioning/actions/workflows/ansible-lint.yml/badge.svg)
+
 This repository contains ansible roles to automatically install Software in a mac
 
 ## Roles
