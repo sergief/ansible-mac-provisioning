@@ -1,4 +1,5 @@
-- hosts: localhost
+- name: Auto provisions Mac computers
+  hosts: localhost
   vars:
     java_version: '21-tem'
     maven_version: '3.9.5'
@@ -34,10 +35,9 @@
       - 1474276998 # HP Smart for Desktop
       - 310633997 # WhatsApp
   roles:
-    - oh-my-zsh
+    - oh_my_zsh
     - node
     - python
     - vscode
     - java
     - homebrew
-

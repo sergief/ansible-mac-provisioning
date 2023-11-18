@@ -1,33 +1,34 @@
 ---
 - name: Download sdkman
-  shell: curl -fsSL https://get.sdkman.io|bash
+  ansible.builtin.shell: set -o pipefail && curl -fsSL https://get.sdkman.io|bash
   args:
     chdir: "{{ ansible_env.HOME }}"
     creates: "{{ ansible_env.HOME }}/.sdkman/"
 - name: Add executable permissions to the sdkman installer
-  file:
+  ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/.sdkman/bin/sdkman-init.sh"
-    mode: 0744
+    mode: "0744"
 - name: Install sdkman
-  shell: "source {{ ansible_env.HOME }}/.zshrc && {{ ansible_env.HOME }}/.sdkman/bin/sdkman-init.sh"
+  ansible.builtin.shell: "source {{ ansible_env.HOME }}/.zshrc && {{ ansible_env.HOME }}/.sdkman/bin/sdkman-init.sh"
   args:
     chdir: "{{ ansible_env.HOME }}"
     executable: /bin/zsh
+  changed_when: false
 - name: Install Java
-  shell: "source {{ ansible_env.HOME }}/.zshrc && sdk install java {{ java_version }}"
+  ansible.builtin.shell: "source {{ ansible_env.HOME }}/.zshrc && sdk install java {{ java_version }}"
   args:
     chdir: "{{ ansible_env.HOME }}"
     executable: /bin/zsh
     creates: "{{ ansible_env.HOME }}/.sdkman/candidates/java/{{ java_version }}"
 - name: Install Maven
-  shell: "{{ ansible_env.HOME }}/.zshrc && sdk install maven {{ maven_version }}"
+  ansible.builtin.shell: "{{ ansible_env.HOME }}/.zshrc && sdk install maven {{ maven_version }}"
   args:
     chdir: "{{ ansible_env.HOME }}"
     executable: /bin/zsh
     creates: "{{ ansible_env.HOME }}/.sdkman/candidates/maven/{{ maven_version }}"
 - name: Create java zsh include configuration file
-  template:
+  ansible.builtin.template:
     src: zshrc_include_java.j2
     dest: "{{ ansible_env.HOME }}/.zshrc_include_java"
     owner: "{{ ansible_env.USER }}"
-    mode: 0644
+    mode: "0644"

@@ -1,0 +1,9 @@
+---
+- name: Log Font configuration settings
+  ansible.builtin.debug:
+    msg: "Remember to change the font in iTerm:  iTerm2 > Preferences > Profiles > Text > Change Font > Inconsolata"
+- name: Install powerline fonts
+  ansible.builtin.command: ./install.sh
+  args:
+    chdir: "{{ ansible_env.HOME }}/fonts"
+  changed_when: false

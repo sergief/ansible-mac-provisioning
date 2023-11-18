@@ -1,22 +1,22 @@
 ---
 - name: Install nvm
-  homebrew:
+  community.general.homebrew:
     name: nvm
     state: present
 - name: Create nvm configuration file
-  template:
+  ansible.builtin.template:
     src: zshrc_include_nvm.j2
     dest: "{{ ansible_env.HOME }}/.zshrc_include_nvm"
     owner: "{{ ansible_env.USER }}"
     mode: '0644'
-    force: yes
+    force: true
 - name: Install node
-  shell: source {{ ansible_env.HOME }}/.zshrc && nvm install {{ node_version }}
+  ansible.builtin.shell: source {{ ansible_env.HOME }}/.zshrc && nvm install {{ node_version }}
   args:
     executable: /bin/zsh
+  changed_when: false
 - name: Use the selected node version
-  shell: source {{ ansible_env.HOME }}/.zshrc && nvm install {{ node_version }}
+  ansible.builtin.shell: source {{ ansible_env.HOME }}/.zshrc && nvm install {{ node_version }}
   args:
     executable: /bin/zsh
-
-
+  changed_when: false

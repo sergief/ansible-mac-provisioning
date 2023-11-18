@@ -1,9 +1,8 @@
 ---
-packages_needed_to_build_python:
+python_packages_needed_to_build_python:
   - openssl
   - readline
   - sqlite3
   - xz
   - zlib
   - tcl-tk
-
