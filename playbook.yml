@@ -28,6 +28,7 @@
       - pycharm-ce
       - darktable
       - pencil
+      - logi-options-plus
     mac_app_store_packages:
       - 409183694 # Keynote
       - 409203825 # Numbers
