@@ -36,6 +36,8 @@
       - 409201541 # Pages
       - 1474276998 # HP Smart for Desktop
       - 310633997 # WhatsApp
+    terminal_aliases:
+      - upgrade="brew update && brew upgrade && brew upgrade --cask --greedy && mas upgrade"
   roles:
     - oh_my_zsh
     - node

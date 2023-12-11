@@ -37,6 +37,12 @@
     owner: "{{ ansible_env.USER }}"
     mode: '0644'
     force: true
+- name: Add user defined aliases
+  ansible.builtin.template:
+    src: zshrc_include_aliases.j2
+    dest: "{{ ansible_env.HOME }}/.zshrc_include_aliases"
+    owner: "{{ ansible_env.USER }}"
+    mode: '0644'
 - name: Install iTerm2
   community.general.homebrew_cask:
     name: iterm2
