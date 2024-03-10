@@ -16,6 +16,12 @@
       - dbaeumer.vscode-eslint
     homebrew_packages:
       - cask
+      - htop
+      - wget
+      - midnight-commander
+      - speedtest-cli
+      - bat
+      - terraform
     homebrew_cask_packages:
       - spotify
       - firefox
@@ -27,15 +33,22 @@
       - intellij-idea-ce
       - pycharm-ce
       - darktable
+      - gimp
+      - inkscape
       - pencil
       - logi-options-plus
       - calibre
+      - vlc
+      - android-file-transfer
+      - utm
+      - pulsar
     mac_app_store_packages:
       - 409183694 # Keynote
       - 409203825 # Numbers
       - 409201541 # Pages
       - 1474276998 # HP Smart for Desktop
       - 310633997 # WhatsApp
+      - 425424353 # The Unarchiver
     terminal_aliases:
       - upgrade="brew update && brew upgrade && brew upgrade --cask --greedy && mas upgrade"
   roles:
