@@ -21,7 +21,7 @@
     executable: /bin/zsh
     creates: "{{ ansible_env.HOME }}/.sdkman/candidates/java/{{ java_version }}"
 - name: Install Maven
-  ansible.builtin.shell: "{{ ansible_env.HOME }}/.zshrc && sdk install maven {{ maven_version }}"
+  ansible.builtin.shell: "source {{ ansible_env.HOME }}/.zshrc && sdk install maven {{ maven_version }}"
   args:
     chdir: "{{ ansible_env.HOME }}"
     executable: /bin/zsh
