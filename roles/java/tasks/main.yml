@@ -26,6 +26,12 @@
     chdir: "{{ ansible_env.HOME }}"
     executable: /bin/zsh
     creates: "{{ ansible_env.HOME }}/.sdkman/candidates/maven/{{ maven_version }}"
+- name: Install Gradle
+  ansible.builtin.shell: "source {{ ansible_env.HOME }}/.zshrc && sdk install gradle {{ gradle_version }}"
+  args:
+    chdir: "{{ ansible_env.HOME }}"
+    executable: /bin/zsh
+    creates: "{{ ansible_env.HOME }}/.sdkman/candidates/gradle/{{ gradle_version }}"
 - name: Create java zsh include configuration file
   ansible.builtin.template:
     src: zshrc_include_java.j2

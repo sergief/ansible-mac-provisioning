@@ -3,6 +3,7 @@
   vars:
     java_version: '21-tem'
     maven_version: '3.9.5'
+    gradle_version: '8.7'
     python_version: '3.12.0'
     node_version: '21.0.0'
     visual_studio_code_extensions:
@@ -22,6 +23,7 @@
       - speedtest-cli
       - bat
       - terraform
+      - pnpm
     homebrew_cask_packages:
       - spotify
       - firefox
@@ -41,7 +43,9 @@
       - vlc
       - android-file-transfer
       - utm
-      - pulsar
+      - horos
+      - zed
+      - openmtp
     mac_app_store_packages:
       - 409183694 # Keynote
       - 409203825 # Numbers
@@ -49,6 +53,7 @@
       - 1474276998 # HP Smart for Desktop
       - 310633997 # WhatsApp
       - 425424353 # The Unarchiver
+      - 1446785996 # Scratch
     terminal_aliases:
       - upgrade="brew update && brew upgrade && brew upgrade --cask --greedy && mas upgrade"
   roles:
